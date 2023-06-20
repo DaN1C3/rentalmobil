@@ -31,11 +31,11 @@ class Mobil {
 
     @Override
     public String toString() {
-        return "MOBIL {" +
+        return "|MOBIL |" +
                 "MERK = '" + merk + '\'' +
-                ", WARNA = '" + warna + '\'' +
-                ", TERSEDIA = " + tersedia +
-                '}';
+                "| WARNA = '" + warna + '\'' +
+                "| TERSEDIA = " + tersedia +
+                '|';
     }
 }
 
@@ -53,6 +53,13 @@ class RentalMobil {
     }
 
     public void sewaMobil() {
+        System.out.println("================= Daftar mobil tersedia =================");
+        for (Mobil mobil : mobilList) {
+            if (mobil.isTersedia()) {
+                System.out.println(mobil);
+            }
+        }
+
         System.out.print("Masukkan merk mobil yang ingin disewa: ");
         String merk = scanner.nextLine();
 
@@ -81,7 +88,7 @@ class RentalMobil {
     }
 
     public void tampilkanMobilTersedia() {
-        System.out.println("Daftar mobil tersedia:");
+        System.out.println("================= Daftar mobil tersedia =================");
         for (Mobil mobil : mobilList) {
             if (mobil.isTersedia()) {
                 System.out.println(mobil);
@@ -92,12 +99,13 @@ class RentalMobil {
     public void menu() {
         int pilihan;
         do {
-            System.out.println("========== MENU ==========");
-            System.out.println("1. Tambah Mobil");
-            System.out.println("2. Sewa Mobil");
-            System.out.println("3. Kembalikan Mobil");
-            System.out.println("4. Tampilkan Mobil Tersedia");
-            System.out.println("5. Keluar");
+            System.out.println("============== MENU ==============");
+            System.out.println("|| 1. Tambah Mobil              ||");
+            System.out.println("|| 2. Sewa Mobil                ||");
+            System.out.println("|| 3. Kembalikan Mobil          ||");
+            System.out.println("|| 4. Tampilkan Mobil Tersedia  ||");
+            System.out.println("|| 5. Keluar                    ||");
+            System.out.println("==================================");
             System.out.print("Pilihan Anda: ");
             pilihan = scanner.nextInt();
             scanner.nextLine(); // Membersihkan \n di buffer setelah membaca angka
