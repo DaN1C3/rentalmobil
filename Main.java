@@ -14,6 +14,11 @@ class RentalMobil {
     public void tambahMobil(Mobil mobil) {
         mobilList.add(mobil);
     }
+    // menambahkan method overloading
+     public void tambahMobil(String merk, String warna) {
+        Mobil mobil = new Mobil(merk, warna);
+        tambahMobil(mobil);
+    }
 
     public void sewaMobil() {
         System.out.println("================= Daftar mobil tersedia =================");
@@ -104,7 +109,17 @@ class RentalMobil {
         System.out.print("Masukkan warna mobil: ");
         String warna = scanner.nextLine();
 
-        Mobil mobil = new Mobil(merk, warna);
+        Mobil mobil;
+        System.out.print("Apakah mobil premium ? (y/n)");
+        String isPremium = scanner.nextLine();
+
+        if (isPremium.equalsIgnoreCase("y")) {
+            System.out.print("Masukkan fitur premium: ");
+            String premiumFeature = scanner.nextLine();
+            mobil = new MobilPremium(merk, warna, premiumFeature);
+        } else {
+            mobil = new Mobil(merk, warna);
+        }
         tambahMobil(mobil);
         System.out.println("Mobil berhasil ditambahkan.");
     }
@@ -117,7 +132,10 @@ public class Main {
         rentalMobil.tambahMobil(new Mobil("Avanza", "Hitam"));
         rentalMobil.tambahMobil(new Mobil("Innova", "Putih"));
         rentalMobil.tambahMobil(new Mobil("Ertiga", "Silver"));
-
+        rentalMobil.tambahMobil(new Mobil("Pajero", "Silver"));
+        // menambahkan satu contoh object MobilPremium
+        rentalMobil.tambahMobil(new MobilPremium("BMW X5", "Hitam", "Sunroof dan Interior Kulit"));
+        rentalMobil.tambahMobil(new Jeep("Jeep Wrangler", "Hitam"));
         rentalMobil.menu();
     }
 }
